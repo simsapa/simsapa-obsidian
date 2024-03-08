@@ -62,7 +62,8 @@ export default class SimsapaPlugin extends Plugin {
 
             // Linux, Windows: Ctrl+Shift+D
             // MacOS: Cmd+Shift+D
-            hotkeys: [{ modifiers: ["Mod", "Shift"], key: "d" }],
+            // NOTE: Plugin guidelines recommend not setting default hotkeys for commands to avoid conflicts.
+            // hotkeys: [{ modifiers: ["Mod", "Shift"], key: "d" }],
             editorCallback: (editor: Editor, _view: MarkdownView) => {
                 const sel = editor.getSelection()
                 this.simsapa_lookup(`${sel}`);
