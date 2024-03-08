@@ -1,0 +1,33 @@
+{
+  "name": "simsapa-obsidian-plugin",
+  "version": "0.1.0",
+  "description": "Simsapa Obsidian Plugin",
+  "author": "Gambhiro",
+  "license": "MIT",
+  "keywords": [],
+  "main": "main.js",
+  "scripts": {
+    "dev": "",
+    "build": "webpack",
+    "version": "node version-bump.mjs && git add manifest.json versions.json"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.6",
+    "@types/ws": "^8.5.10",
+    "@typescript-eslint/eslint-plugin": "5.29.0",
+    "@typescript-eslint/parser": "5.29.0",
+    "bufferutil": "^4.0.8",
+    "builtin-modules": "3.3.0",
+    "finalhandler": "^1.2.0",
+    "obsidian": "latest",
+    "serve-static": "^1.15.0",
+    "terser-webpack-plugin": "^5.3.10",
+    "ts-loader": "^9.5.1",
+    "tslib": "2.4.0",
+    "typescript": "4.7.4",
+    "utf-8-validate": "^6.0.3",
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4",
+    "ws": "^8.16.0"
+  }
+}

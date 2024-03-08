@@ -1,0 +1,11 @@
+{
+	"id": "simsapa-obsidian-plugin",
+	"name": "Simsapa Obsidian Plugin",
+	"version": "0.1.0",
+	"minAppVersion": "0.15.0",
+	"description": "Simsapa Obsidian Plugin",
+	"author": "Gambhiro",
+	"authorUrl": "https://github.com/gambhiro",
+	"fundingUrl": "",
+	"isDesktopOnly": true
+}
