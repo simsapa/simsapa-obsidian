@@ -1,7 +1,7 @@
 {
 	"id": "simsapa-obsidian-plugin",
 	"name": "Simsapa Obsidian Plugin",
-	"version": "0.1.0",
+	"version": "0.5.0",
 	"minAppVersion": "0.15.0",
 	"description": "Simsapa Obsidian Plugin",
 	"author": "Gambhiro",
