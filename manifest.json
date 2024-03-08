@@ -1,9 +1,9 @@
 {
-	"id": "simsapa-obsidian-plugin",
-	"name": "Simsapa Obsidian Plugin",
+	"id": "simsapa",
+	"name": "Simsapa",
 	"version": "0.5.0",
 	"minAppVersion": "0.15.0",
-	"description": "Simsapa Obsidian Plugin",
+	"description": "Plugin for Simsapa Dhamma Reader. Open a sidebar or double-click to lookup Pāli words in the dictionary, or search in the suttas.",
 	"author": "Gambhiro",
 	"authorUrl": "https://github.com/gambhiro",
 	"fundingUrl": "",
