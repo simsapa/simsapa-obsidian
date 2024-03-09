@@ -1,4 +1,12 @@
 import * as path from "path";
+import * as fs from "fs";
+
+// @ts-ignore
+import sidebar_html_data from 'raw-loader!./static/sidebar.html';
+// @ts-ignore
+import sidebar_js_data from 'raw-loader!./static/sidebar.js';
+// @ts-ignore
+import sidebar_css_data from 'raw-loader!./static/sidebar.css';
 
 import { Editor, MarkdownView, Plugin, WorkspaceLeaf } from 'obsidian';
 import { SERVER_PORT, SimsapaView, VIEW_TYPE_SIMSAPA, WS_SERVER_PORT } from './simsapa-view';
@@ -33,6 +41,8 @@ export default class SimsapaPlugin extends Plugin {
     ws_server: WebSocketServer | null = null;
     ws_sockets: any[];
     ws_heartbeat_timer: NodeJS.Timer | null = null;
+    plugin_folder: string;
+    static_folder: string;
 
     async onload() {
         this.registerView(
@@ -44,6 +54,11 @@ export default class SimsapaPlugin extends Plugin {
             this.activate_simsapa_view();
         });
         ribbon_icon_el.addClass('my-plugin-ribbon-class');
+
+        this.plugin_folder = getPluginAbsolutePath(this, isWindows());
+        this.static_folder = path.join(this.plugin_folder, 'static');
+
+        this.ensure_static_files();
 
         // NOTE: Use Obsidian plugin guideline prefers sentence-case:
         // Prefer "Create new note" over "Create New Note".
@@ -157,16 +172,24 @@ export default class SimsapaPlugin extends Plugin {
         return true;
     }
 
+    ensure_static_files() {
+        if (!fs.existsSync(this.static_folder)) {
+            fs.mkdirSync(this.static_folder);
+
+            fs.writeFileSync(path.join(this.static_folder, "sidebar.html"), sidebar_html_data);
+            fs.writeFileSync(path.join(this.static_folder, "sidebar.js"), sidebar_js_data);
+            fs.writeFileSync(path.join(this.static_folder, "sidebar.css"), sidebar_css_data);
+        }
+    }
+
     async start_static_server() {
-        var finalhandler = require('finalhandler');
-        var http = require('http');
-        var serve_static = require('serve-static');
+        const finalhandler = require('finalhandler');
+        const http = require('http');
+        const serve_static = require('serve-static');
 
-        var static_folder = path.join(getPluginAbsolutePath(this, isWindows()), 'static');
+        const serve = serve_static(this.static_folder, { index: ['sidebar.html',] });
 
-        var serve = serve_static(static_folder, { index: ['sidebar.html',] });
-
-        var server = http.createServer(function onRequest(req: any, res: any) {
+        const server = http.createServer(function onRequest(req: any, res: any) {
             serve(req, res, finalhandler(req, res));
         })
         this.server = server;

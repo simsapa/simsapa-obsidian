@@ -20,6 +20,7 @@
     "builtin-modules": "3.3.0",
     "finalhandler": "^1.2.0",
     "obsidian": "latest",
+    "raw-loader": "^4.0.2",
     "serve-static": "^1.15.0",
     "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
