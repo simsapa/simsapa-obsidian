@@ -4,8 +4,8 @@
 	"version": "0.5.0",
 	"minAppVersion": "0.15.0",
 	"description": "Plugin for Simsapa Dhamma Reader. Open a sidebar or double-click to lookup Pāli words in the dictionary, or search in the suttas.",
-	"author": "Gambhiro",
-	"authorUrl": "https://github.com/gambhiro",
+	"author": "gambhiro",
+	"authorUrl": "https://simsapa.github.io/",
 	"fundingUrl": "",
 	"isDesktopOnly": true
 }
