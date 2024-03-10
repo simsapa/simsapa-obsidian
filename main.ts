@@ -8,10 +8,10 @@ import sidebar_js_data from 'raw-loader!./static/sidebar.js';
 // @ts-ignore
 import sidebar_css_data from 'raw-loader!./static/sidebar.css';
 
-import { Editor, MarkdownView, Plugin, WorkspaceLeaf } from 'obsidian';
+import { Editor, MarkdownView, Plugin, WorkspaceLeaf, Platform } from 'obsidian';
 import { SERVER_PORT, SimsapaView, VIEW_TYPE_SIMSAPA, WS_SERVER_PORT } from './simsapa-view';
 
-import { getPluginAbsolutePath, isWindows } from './Common';
+import { getPluginAbsolutePath } from './Common';
 import { WebSocketServer } from "ws";
 
 const SIMSAPA_BASE_URL = "http://localhost:4848";
@@ -55,7 +55,7 @@ export default class SimsapaPlugin extends Plugin {
         });
         ribbon_icon_el.addClass('my-plugin-ribbon-class');
 
-        this.plugin_folder = getPluginAbsolutePath(this, isWindows());
+        this.plugin_folder = getPluginAbsolutePath(this, Platform.isWin);
         this.static_folder = path.join(this.plugin_folder, 'static');
 
         this.ensure_static_files();
@@ -65,7 +65,7 @@ export default class SimsapaPlugin extends Plugin {
 
         this.addCommand({
             id: 'simsapa-open-sidebar',
-            name: 'Simsapa: open sidebar',
+            name: 'Open sidebar',
             callback: () => {
                 this.activate_simsapa_view();
             }
@@ -73,7 +73,7 @@ export default class SimsapaPlugin extends Plugin {
 
         this.addCommand({
             id: 'simsapa-lookup-selection-in-dictionary',
-            name: 'Simsapa: lookup selection in dictionary',
+            name: 'Lookup selection in dictionary',
 
             // Linux, Windows: Ctrl+Shift+D
             // MacOS: Cmd+Shift+D

@@ -27,7 +27,6 @@ import {
 
 import * as path from "path";
 import SimsapaPlugin from "./main";
-import * as process from "process";
 
 export function getVaultAbsolutePath(app: App) {
     // Original code was copied 2021-08-22 from https://github.com/phibr0/obsidian-open-with/blob/84f0e25ba8e8355ff83b22f4050adde4cc6763ea/main.ts#L66-L67
@@ -49,10 +48,6 @@ export function getPluginAbsolutePath(plugin: SimsapaPlugin, convertSlashToBacks
         ),
         convertSlashToBackslash
     );
-}
-
-export function isWindows() {
-    return process.platform === "win32";
 }
 
 /**
