@@ -8,7 +8,7 @@ import sidebar_js_data from 'raw-loader!./static/sidebar.js';
 // @ts-ignore
 import sidebar_css_data from 'raw-loader!./static/sidebar.css';
 
-import { Editor, MarkdownView, Plugin, WorkspaceLeaf, Platform } from 'obsidian';
+import { Editor, MarkdownView, Plugin, WorkspaceLeaf, Platform, requestUrl, RequestUrlParam } from 'obsidian';
 import { SERVER_PORT, SimsapaView, VIEW_TYPE_SIMSAPA, WS_SERVER_PORT } from './simsapa-view';
 
 import { getPluginAbsolutePath } from './Common';
@@ -26,13 +26,16 @@ function show_word(uid: string): void {
     const url = SIMSAPA_BASE_URL + "/lookup_window_query";
     const data = { query_text: uid };
 
-    fetch(url, {
+    const params: RequestUrlParam = {
+        url: url,
         method: "POST",
         headers: {
             "Content-Type": "application/json; charset=utf-8",
         },
         body: JSON.stringify(data),
-    })
+    }
+
+    requestUrl(params)
         .catch(error => console.error('Error:', error));
 }
 
@@ -64,7 +67,7 @@ export default class SimsapaPlugin extends Plugin {
         // Prefer "Create new note" over "Create New Note".
 
         this.addCommand({
-            id: 'simsapa-open-sidebar',
+            id: 'open-sidebar',
             name: 'Open sidebar',
             callback: () => {
                 this.activate_simsapa_view();
@@ -72,7 +75,7 @@ export default class SimsapaPlugin extends Plugin {
         });
 
         this.addCommand({
-            id: 'simsapa-lookup-selection-in-dictionary',
+            id: 'lookup-selection-in-dictionary',
             name: 'Lookup selection in dictionary',
 
             // Linux, Windows: Ctrl+Shift+D
