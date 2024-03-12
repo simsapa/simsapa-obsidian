@@ -4,6 +4,10 @@ This is a sub-module repo for [simsapa-extensions-and-plugins](https://github.co
 
 The plugin requires [Simsapa Dhamma Reader](https://simsapa.github.io/) to be installed to work.
 
+![Simsapa Sidebar](images/obsidian-sidebar-cittanupassi-screenshot.png)
+
+![Simsapa Word Lookup](images/obsidian-word-lookup-cittanupassi-screenshot.png)
+
 Start the Simsapa app, close the main window and let the app stay in the
 background. The plugin makes HTTP requests to the application.
 
